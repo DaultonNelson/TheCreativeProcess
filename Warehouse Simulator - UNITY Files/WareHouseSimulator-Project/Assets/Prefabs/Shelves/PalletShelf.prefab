@@ -1,49 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &863238257
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 863238258}
-  - component: {fileID: 863238259}
-  m_Layer: 0
-  m_Name: ShelfTrigger
-  m_TagString: Shelf
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &863238258
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 863238257}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.18, z: -0.4}
-  m_LocalScale: {x: 0.3743601, y: 0.3743601, z: 0.3743601}
-  m_Children: []
-  m_Father: {fileID: 5394734640516126692}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &863238259
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 863238257}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1094973316
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,9 +324,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5394734640516126692}
   - component: {fileID: 2112315732}
+  - component: {fileID: 6434215130153835288}
   m_Layer: 0
   m_Name: PalletShelf
-  m_TagString: Untagged
+  m_TagString: Shelf
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -388,7 +345,6 @@ Transform:
   m_Children:
   - {fileID: 5394734640067758825}
   - {fileID: 1094973317}
-  - {fileID: 863238258}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -404,6 +360,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11caa613f0d1f342a3021c9d0010800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  areaCode: PS
+  laneLetter: 
+  shelfNumber: 0
+--- !u!65 &6434215130153835288
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5394734640516126715}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.38162458, y: 0.6, z: 0.41240925}
+  m_Center: {x: 0.00004351139, y: 0.2106654, z: -0.4}
 --- !u!1 &5394734640621234088
 GameObject:
   m_ObjectHideFlags: 0

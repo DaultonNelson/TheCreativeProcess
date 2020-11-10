@@ -1,0 +1,5 @@
+JustAPallet
+PalletShelf
+ShorttShelf
+
+11 chars in each name
