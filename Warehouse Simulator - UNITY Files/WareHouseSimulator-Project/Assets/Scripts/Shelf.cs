@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,15 +27,15 @@ public class Shelf : MonoBehaviour
     /// The identification string of this shelf.
     /// </summary>
     public string ShelfID { get { return $"{areaCode.ToUpper()}:{laneLetter.ToUpper()}{shelfNumber}"; } }
-    /// <summary>
-    /// Return true if the order picker is at this Shelf, or false if not.
-    /// </summary>
-    public bool PickerAtShelf { get; set; }
 
     /// <summary>
     /// The User Interface in the scene.
     /// </summary>
     private UserInterface ui;
+    /// <summary>
+    /// A list of this Shelf's subshelfs.
+    /// </summary>
+    private List<Subshelf> subshelves = new List<Subshelf>();
     #endregion
 
     private void Start()
@@ -42,6 +43,26 @@ public class Shelf : MonoBehaviour
         name = $"{name.Substring(0, 11)}_{ShelfID}";
 
         ui = FindObjectOfType<UserInterface>();
+
+        PopulateSubshelves();
+    }
+
+    /// <summary>
+    /// Populates the subshelves of this Shelf with random values.
+    /// </summary>
+    private void PopulateSubshelves()
+    {
+        for (int i = 0; i < subshelfAmount; i++)
+        {
+            Subshelf subshelf = new Subshelf()
+            {
+                //TODO: Probably want to give Order Item it's shelf reference here.
+                shelfItem = new OrderItem(NounProcessor.GetRandomNoun(), $"{ShelfID}.{i + 1}"),
+                currentItemCount = UnityEngine.Random.Range(1, 31)
+            };
+
+            subshelves.Add(subshelf);
+        }
     }
 
     /// <summary>
@@ -50,25 +71,34 @@ public class Shelf : MonoBehaviour
     /// <param name="subshelfIndex">
     /// The index of the subshelf to take from.
     /// </param>
-    public void PickItem(int subshelfIndex)
+    public OrderItem PickItem(int subshelfIndex)
     {
+        OrderItem output = null;
+
         if (subshelfIndex > subshelfAmount || subshelfAmount < 1)
         {
-            Debug.Log("Invalid value given to PickItem.", gameObject);
-            return;
+            Debug.Log($"Invalid value given to PickItem at {ShelfID}.", gameObject);
+            return output;
         }
 
         Debug.Log($"An Item is being picked by the player at {ShelfID} - Subshelf: {subshelfIndex}", gameObject);
+        output = subshelves[subshelfIndex - 1].TakeFromSubshelf();
+
+        return output;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
+            PlayerOrderPicking orderPicking = other.transform.root.GetComponent<PlayerOrderPicking>();
+            if (orderPicking != null)
+            {
+                orderPicking.CurrentShelf = this;
+            }
+
             ui.DisplayShelfID(ShelfID);
             ui.DisplaySubshelfKeys(subshelfAmount);
-
-            PickerAtShelf = true;
         }
     }
 
@@ -76,10 +106,14 @@ public class Shelf : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            PlayerOrderPicking orderPicking = other.transform.root.GetComponent<PlayerOrderPicking>();
+            if (orderPicking != null)
+            {
+                orderPicking.CurrentShelf = null;
+            }
+
             ui.DisplayShelfID(string.Empty);
             ui.HideSubshelfKeys();
-
-            PickerAtShelf = false;
         }
     }
 }

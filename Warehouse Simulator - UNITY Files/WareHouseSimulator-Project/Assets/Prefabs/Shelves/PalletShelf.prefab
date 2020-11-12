@@ -324,7 +324,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5394734640516126692}
   - component: {fileID: 2112315732}
-  - component: {fileID: 5448987903166678286}
   - component: {fileID: 6434215130153835288}
   m_Layer: 0
   m_Name: PalletShelf
@@ -365,18 +364,9 @@ MonoBehaviour:
   laneLetter: 
   shelfNumber: 0
   subshelfAmount: 2
---- !u!114 &5448987903166678286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5394734640516126715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c50d118d25f8d243b55d4b916d29394, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  shelfItems:
+  - {fileID: 11400000, guid: 817c1407c0cb3bb42b658ebb08e5ad6f, type: 2}
+  - {fileID: 11400000, guid: cf2f534b35631484cb0d4d21a3574700, type: 2}
 --- !u!65 &6434215130153835288
 BoxCollider:
   m_ObjectHideFlags: 0

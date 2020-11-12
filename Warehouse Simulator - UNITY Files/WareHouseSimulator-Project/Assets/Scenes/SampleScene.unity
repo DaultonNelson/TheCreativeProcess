@@ -13871,6 +13871,7 @@ GameObject:
   - component: {fileID: 1053713940}
   - component: {fileID: 1053713941}
   - component: {fileID: 1053713943}
+  - component: {fileID: 1053713942}
   m_Layer: 0
   m_Name: PlayerCharacterObject
   m_TagString: Untagged
@@ -13912,6 +13913,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.17, z: 0}
+--- !u!114 &1053713942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053713939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0714f95bd77c98e40b69c99267c716cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickedItems: []
 --- !u!114 &1053713943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15344,6 +15358,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1895393298}
     m_Modifications:
+    - target: {fileID: 2112315732, guid: 2911c9779267b5f4ebace5f58d322330, type: 3}
+      propertyPath: shelfItems.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2112315732, guid: 2911c9779267b5f4ebace5f58d322330, type: 3}
       propertyPath: shelfNumber
       value: 18
