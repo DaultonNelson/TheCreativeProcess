@@ -27,18 +27,18 @@ public class Shelf : MonoBehaviour
     /// The identification string of this shelf.
     /// </summary>
     public string ShelfID { get { return $"{areaCode.ToUpper()}:{laneLetter.ToUpper()}{shelfNumber}"; } }
+    /// <summary>
+    /// A list of this Shelf's subshelfs.
+    /// </summary>
+    public List<Subshelf> subshelves { get; set; } = new List<Subshelf>();
 
     /// <summary>
     /// The User Interface in the scene.
     /// </summary>
     private UserInterface ui;
-    /// <summary>
-    /// A list of this Shelf's subshelfs.
-    /// </summary>
-    private List<Subshelf> subshelves = new List<Subshelf>();
     #endregion
 
-    private void Start()
+    private void Awake()
     {
         name = $"{name.Substring(0, 11)}_{ShelfID}";
 
@@ -83,6 +83,7 @@ public class Shelf : MonoBehaviour
 
         Debug.Log($"An Item is being picked by the player at {ShelfID} - Subshelf: {subshelfIndex}", gameObject);
         output = subshelves[subshelfIndex - 1].TakeFromSubshelf();
+        ui.DisplaySubshelfKeys(subshelves);
 
         return output;
     }
@@ -98,7 +99,7 @@ public class Shelf : MonoBehaviour
             }
 
             ui.DisplayShelfID(ShelfID);
-            ui.DisplaySubshelfKeys(subshelfAmount);
+            ui.DisplaySubshelfKeys(subshelves);
         }
     }
 

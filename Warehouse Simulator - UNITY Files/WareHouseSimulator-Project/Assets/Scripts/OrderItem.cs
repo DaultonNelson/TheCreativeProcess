@@ -3,27 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//TODO: Can't have an individual instance of a parent shelf reference for scriptable objects because that would change the base file.
 [Serializable]
-public class OrderItem
+public class OrderItem : IComparable<OrderItem>
 {
     #region Variables
     /// <summary>
     /// The name of this Order Item.
     /// </summary>
-    public string itemName;
+    public string ItemName;
     /// <summary>
     /// The Sprite Symbol that represent this Order Item.
     /// </summary>
-    public Sprite itemSymbolSprite { get; set; }
+    public Sprite ItemSymbolSprite { get; set; }
     /// <summary>
     /// The color of the Order Item symbol.
     /// </summary>
-    public Color itemSymbolColor { get; set; } = Color.white;
+    public Color ItemSymbolColor { get; set; } = Color.white;
     /// <summary>
     /// The ID of the Shelf this Order Item belongs to.
     /// </summary>
-    public string parentShelfID { get; set; }
+    public string ParentShelfID;
     #endregion
 
     /// <summary>
@@ -37,7 +36,19 @@ public class OrderItem
     /// </param>
     public OrderItem(string _name, string _parent)
     {
-        itemName = _name;
-        parentShelfID = _parent;
+        ItemName = _name;
+        ParentShelfID = _parent;
+    }
+
+    // > 0 - Current instance is greater than object being compared with.
+    // < 0 - Current instance is less than object being compared with.
+    // == 0 - Current instance is equal to object being compared with.
+    public int CompareTo(OrderItem otherItem)
+    {
+        int output = 0;
+
+        output = ParentShelfID.CompareTo(otherItem.ParentShelfID);
+
+        return output;
     }
 }

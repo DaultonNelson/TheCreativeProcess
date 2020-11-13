@@ -14,6 +14,10 @@ public class UserInterface : MonoBehaviour
     /// A list of the subshelf key graphics in the Interface.
     /// </summary>
     public List<GameObject> subshelfKeys = new List<GameObject>();
+    /// <summary>
+    /// A list of the Texts next to the Subshelf Keys.
+    /// </summary>
+    public List<Text> subshelfKeyTexts = new List<Text>();
     #endregion
 
     private void Start()
@@ -35,24 +39,25 @@ public class UserInterface : MonoBehaviour
     /// <summary>
     /// Displays the amount of Subshelf keys given.
     /// </summary>
-    /// <param name="amountOfKeys">
-    /// The amount of keys to be displayed.
+    /// <param name="subshelves">
+    /// The subshelves belonging to the shelf.
     /// </param>
-    public void DisplaySubshelfKeys(int amountOfKeys)
+    public void DisplaySubshelfKeys(List<Subshelf> subshelves)
     {
         HideSubshelfKeys();
 
-        if (amountOfKeys > subshelfKeys.Count || amountOfKeys < 1)
+        if (subshelves.Count > subshelfKeys.Count || subshelves.Count < 1)
         {
             Debug.LogError("Insufficent amount was given to DisplaySubshelfKeys.", gameObject);
-            Debug.Log($"List Count: {subshelfKeys.Count}");
-            Debug.Log($"Amount of Keys Given: {amountOfKeys}");
+            Debug.Log($"Subshelf Key List Count: {subshelfKeys.Count}");
+            Debug.Log($"Amount of Subshelves: {subshelves.Count}");
             return;
         }
 
-        for (int i = 0; i < amountOfKeys; i++)
+        for (int i = 0; i < subshelves.Count; i++)
         {
             subshelfKeys[i].SetActive(true);
+            subshelfKeyTexts[i].text = $"{subshelves[i].shelfItem.ItemName} (Amt: {subshelves[i].currentItemCount})";
         }
     }
 

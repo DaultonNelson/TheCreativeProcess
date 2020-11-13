@@ -1,10 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerOrderPicking : MonoBehaviour
 {
     #region Variables
+    /// <summary>
+    /// The cart this order picker currently has.
+    /// </summary>
+    public OrderCart currentCart = null;
     /// <summary>
     /// The items the player has picked on their cart.
     /// </summary>

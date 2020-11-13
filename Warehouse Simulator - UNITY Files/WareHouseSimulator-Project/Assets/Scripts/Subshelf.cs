@@ -28,7 +28,7 @@ public class Subshelf
 
         output = shelfItem;
         currentItemCount--;
-        Debug.Log($"There are {currentItemCount} {shelfItem.itemName}'s left on this shelf.");
+        Debug.Log($"There are {currentItemCount} {shelfItem.ItemName}'s left on this shelf.");
 
         return output;
     }
