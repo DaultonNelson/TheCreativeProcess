@@ -34,10 +34,12 @@ public class OrderItem : IComparable<OrderItem>
     /// <param name="_parent">
     /// The parent ID of this Order Item.
     /// </param>
-    public OrderItem(string _name, string _parent)
+    public OrderItem(string _name, string _parent, Sprite _sprite, Color _color)
     {
         ItemName = _name;
         ParentShelfID = _parent;
+        ItemSymbolSprite = _sprite;
+        ItemSymbolColor = _color;
     }
 
     // > 0 - Current instance is greater than object being compared with.

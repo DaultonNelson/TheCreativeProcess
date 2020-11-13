@@ -8,12 +8,12 @@ public class OrderCart : MonoBehaviour
 {
     #region Variables
     /// <summary>
-    /// The amount of Order Items that will be put on a cart.
+    /// The amount of Order Items on this Order Cart.
     /// </summary>
     //We need an amount of items to put on our cart
-    public int amountOfItemsPerCart;
+    public int amountOfItemsOnCart;
     /// <summary>
-    /// The orders associated with the cart the player has.
+    /// The orders associated with this Order Cart.
     /// </summary>
     public List<OrderItem> cartOrders = new List<OrderItem>();
     #endregion
@@ -34,7 +34,7 @@ public class OrderCart : MonoBehaviour
         List<Shelf> shelves = FindObjectsOfType<Shelf>().ToList();
         
         //We need a random assortment of items from the warehouse.
-        for (int i = 0; i < amountOfItemsPerCart; i++)
+        for (int i = 0; i < amountOfItemsOnCart; i++)
         {
             Shelf randomShelf = shelves[Random.Range(0, shelves.Count)];
             Subshelf randomSubshelf = randomShelf.subshelves[Random.Range(0, randomShelf.subshelfAmount)];

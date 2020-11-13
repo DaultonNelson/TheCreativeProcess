@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -56,9 +55,13 @@ public class Shelf : MonoBehaviour
         {
             Subshelf subshelf = new Subshelf()
             {
-                //TODO: Probably want to give Order Item it's shelf reference here.
-                shelfItem = new OrderItem(NounProcessor.GetRandomNoun(), $"{ShelfID}.{i + 1}"),
-                currentItemCount = UnityEngine.Random.Range(1, 31)
+                shelfItem = new OrderItem(
+                    OrderItemProcessor.GetRandomNoun(),
+                    $"{ShelfID}.{i + 1}",
+                    ui.GetRandomItemSpriteSybol(),
+                    Random.ColorHSV()),
+
+                currentItemCount = Random.Range(1, 31)
             };
 
             subshelves.Add(subshelf);
@@ -71,17 +74,23 @@ public class Shelf : MonoBehaviour
     /// <param name="subshelfIndex">
     /// The index of the subshelf to take from.
     /// </param>
-    public OrderItem PickItem(int subshelfIndex)
+    public OrderItem PickItem(int subshelfIndex, OrderItem expectedOrder)
     {
         OrderItem output = null;
 
         if (subshelfIndex > subshelfAmount || subshelfAmount < 1)
         {
-            Debug.Log($"Invalid value given to PickItem at {ShelfID}.", gameObject);
+            Debug.LogError($"Invalid value given to PickItem at {ShelfID}.", gameObject);
+            return output;
+        }
+        
+        if (expectedOrder != subshelves[subshelfIndex - 1].shelfItem)
+        {
+            Debug.LogError("Invalid Order Item pick was attempted.", gameObject);
             return output;
         }
 
-        Debug.Log($"An Item is being picked by the player at {ShelfID} - Subshelf: {subshelfIndex}", gameObject);
+        //Debug.Log($"An Item is being picked by the player at {ShelfID} - Subshelf: {subshelfIndex}", gameObject);
         output = subshelves[subshelfIndex - 1].TakeFromSubshelf();
         ui.DisplaySubshelfKeys(subshelves);
 

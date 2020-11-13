@@ -4,9 +4,12 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public static class NounProcessor
+public static class OrderItemProcessor
 {
     #region Variables
+    /// <summary>
+    /// A list of Noun Names.
+    /// </summary>
     public static List<string> NounNames = new List<string>()
     {
         "Street Light",
@@ -72,7 +75,7 @@ public static class NounProcessor
     {
         string output = string.Empty;
 
-        output = NounNames[(int)Random.Range(0, NounNames.Count)];
+        output = NounNames[Random.Range(0, NounNames.Count)];
 
         return output;
     }
