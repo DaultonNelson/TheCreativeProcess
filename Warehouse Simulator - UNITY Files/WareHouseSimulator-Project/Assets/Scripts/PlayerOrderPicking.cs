@@ -2,23 +2,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerOrderPicking : MonoBehaviour
 {
     #region Variables
     /// <summary>
-    /// The cart this order picker currently has.
+    /// The Order Cart Prefab to spawn after the player has turned in their cart.
     /// </summary>
-    public OrderCart currentCart = null;
+    public GameObject orderCartPrefab;
+    /// <summary>
+    /// The place to attach new order carts.
+    /// </summary>
+    public Transform cartAttachment;
     /// <summary>
     /// The items the player has picked on their cart.
     /// </summary>
     public List<OrderItem> pickedItems = new List<OrderItem>();
+    /// <summary>
+    /// Fires off an event once this Order Picker has completed their pick list.
+    /// </summary>
+    public UnityEvent OnCompletePickList;
 
     /// <summary>
     /// The current shelf the player is visiting.
     /// </summary>
     public Shelf CurrentShelf { get; set; } = null;
+    /// <summary>
+    /// The cart this order picker currently has.
+    /// </summary>
+    public OrderCart currentCart { get; set; } = null;
 
     /// <summary>
     /// The pick list the player has.
@@ -46,6 +59,9 @@ public class PlayerOrderPicking : MonoBehaviour
     /// </summary>
     public void AcquireNewOrderCart()
     {
+        GameObject newCartObject = Instantiate(orderCartPrefab, cartAttachment.position, Quaternion.identity);
+        currentCart = newCartObject.GetComponent<OrderCart>();
+
         for (int i = 0; i < currentCart.cartOrders.Count; i++)
         {
             pickList.Enqueue(currentCart.cartOrders[i]);
@@ -69,7 +85,15 @@ public class PlayerOrderPicking : MonoBehaviour
         }
         else
         {
+            currentCart.Filled = true;
+
             ui.UpdateOrdersValues(-1, currentCart.amountOfItemsOnCart);
+
+            if (OnCompletePickList != null)
+            {
+                OnCompletePickList.Invoke(); 
+            }
+
             SendToShipping();
         }
     }
@@ -84,7 +108,7 @@ public class PlayerOrderPicking : MonoBehaviour
 
         ui.DisplayCurrentItemToPick(ui.ShippingItem);
 
-        Debug.Log("Go to Shipping");
+        //Debug.Log("Go to Shipping");
     }
 
     void Update()

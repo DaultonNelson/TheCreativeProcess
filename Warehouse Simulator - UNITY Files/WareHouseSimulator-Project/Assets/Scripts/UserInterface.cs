@@ -10,6 +10,10 @@ public class UserInterface : MonoBehaviour
     /// The Text that displays the currently visited Shelf ID.
     /// </summary>
     public Text shelfIDText;
+    /// <summary>
+    /// The instructional key GameObject for turning carts into Shipping.
+    /// </summary>
+    public GameObject shippingTurnInKey;
 
     /// <summary>
     /// A list of the subshelf key graphics in the Interface.

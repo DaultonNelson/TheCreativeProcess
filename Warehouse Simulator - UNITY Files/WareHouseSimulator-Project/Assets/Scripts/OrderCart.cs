@@ -16,8 +16,13 @@ public class OrderCart : MonoBehaviour
     /// The orders associated with this Order Cart.
     /// </summary>
     public List<OrderItem> cartOrders = new List<OrderItem>();
+
+    /// <summary>
+    /// Return true if Order Cart has been filled with Cart Orders, or false if not.
+    /// </summary>
+    public bool Filled { get; set; } = false;
     #endregion
-    
+
     private void Start()
     {
         cartOrders = PopulateCartOrders();
@@ -29,7 +34,9 @@ public class OrderCart : MonoBehaviour
     private List<OrderItem> PopulateCartOrders()
     {
         List<OrderItem> output = new List<OrderItem>();
-        
+
+        cartOrders.Clear();
+
         //Get the Order Items in the warehouse
         List<Shelf> shelves = FindObjectsOfType<Shelf>().ToList();
         
