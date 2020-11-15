@@ -16,6 +16,10 @@ public class Shipping : MonoBehaviour
     /// </summary>
     private UserInterface ui;
     /// <summary>
+    /// The Labor Logger in the scene.
+    /// </summary>
+    private LaborLogging labor;
+    /// <summary>
     /// A player order picker.
     /// </summary>
     private PlayerOrderPicking orderPicker = null;
@@ -29,6 +33,7 @@ public class Shipping : MonoBehaviour
     private void Start()
     {
         ui = FindObjectOfType<UserInterface>();
+        labor = FindObjectOfType<LaborLogging>();
     }
     
     private void Update()
@@ -54,6 +59,7 @@ public class Shipping : MonoBehaviour
             
             ui.shippingTurnInKey.SetActive(false);
             ui.UpdateCompletedCartCount(completedCarts);
+            labor.LogTimer();
 
             Destroy(cart.gameObject);
 

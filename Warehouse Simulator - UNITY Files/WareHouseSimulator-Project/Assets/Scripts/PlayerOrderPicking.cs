@@ -66,6 +66,7 @@ public class PlayerOrderPicking : MonoBehaviour
     {
         GameObject newCartObject = Instantiate(orderCartPrefab, cartAttachment.position, Quaternion.identity);
         newCartObject.transform.parent = cartAttachment;
+        newCartObject.transform.localEulerAngles = Vector3.zero;
         currentCart = newCartObject.GetComponent<OrderCart>();
 
         currentCart.cartOrders = currentCart.PopulateCartOrders();
