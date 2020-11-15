@@ -23,15 +23,15 @@ public class OrderCart : MonoBehaviour
     public bool Filled { get; set; } = false;
     #endregion
 
-    private void Start()
-    {
-        cartOrders = PopulateCartOrders();
-    }
+    //private void Start()
+    //{
+    //    cartOrders = PopulateCartOrders();
+    //}
     
     /// <summary>
     /// Populates a List of Order Items for the Order Picker to pick.
     /// </summary>
-    private List<OrderItem> PopulateCartOrders()
+    public List<OrderItem> PopulateCartOrders()
     {
         List<OrderItem> output = new List<OrderItem>();
 

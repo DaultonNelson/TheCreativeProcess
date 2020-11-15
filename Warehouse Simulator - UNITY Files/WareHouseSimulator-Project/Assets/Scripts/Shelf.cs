@@ -86,6 +86,7 @@ public class Shelf : MonoBehaviour
         
         if (expectedOrder != subshelves[subshelfIndex - 1].shelfItem)
         {
+            ui.ToggleInvalidPickGraphic(true);
             Debug.LogError("Invalid Order Item pick was attempted.", gameObject);
             return output;
         }

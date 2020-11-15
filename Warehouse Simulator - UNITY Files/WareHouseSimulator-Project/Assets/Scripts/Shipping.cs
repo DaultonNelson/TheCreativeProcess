@@ -19,6 +19,11 @@ public class Shipping : MonoBehaviour
     /// A player order picker.
     /// </summary>
     private PlayerOrderPicking orderPicker = null;
+
+    /// <summary>
+    /// The amount of carts turned in by the Order Picker.
+    /// </summary>
+    private int completedCarts = 0;
     #endregion
 
     private void Start()
@@ -43,10 +48,12 @@ public class Shipping : MonoBehaviour
 
         if (orderPicker.currentCart.Filled)
         {
-            orderPicker.currentCart = null;
+            completedCarts++;
 
-            ui.ToggleOrderPickingUI(false);
-            ui.shippingTurnInKey.SetActive(true);
+            orderPicker.currentCart = null;
+            
+            ui.shippingTurnInKey.SetActive(false);
+            ui.UpdateCompletedCartCount(completedCarts);
 
             Destroy(cart.gameObject);
 
@@ -73,7 +80,7 @@ public class Shipping : MonoBehaviour
         if (other.tag == "Player")
         {
             orderPicker = null;
-            ui.shippingTurnInKey.SetActive(true);
+            ui.shippingTurnInKey.SetActive(false);
         }
     }
 }

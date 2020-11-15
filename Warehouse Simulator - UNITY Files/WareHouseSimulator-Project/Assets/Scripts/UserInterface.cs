@@ -16,6 +16,20 @@ public class UserInterface : MonoBehaviour
     public GameObject shippingTurnInKey;
 
     /// <summary>
+    /// The Text Component that holds the Completed Cart value.
+    /// </summary>
+    [Header("Picker Stats Variables")]
+    public Text completedCartText;
+    /// <summary>
+    /// The Text Component that holds the Time Spent on Pick value.
+    /// </summary>
+    public Text pickTimerText;
+    /// <summary>
+    /// The Text Component that holds the time it took to make the previous pick.
+    /// </summary>
+    public Text previousPickTimeText;
+
+    /// <summary>
     /// A list of the subshelf key graphics in the Interface.
     /// </summary>
     [Header("Subshelf Key Variables")]
@@ -24,12 +38,8 @@ public class UserInterface : MonoBehaviour
     /// A list of the Texts next to the Subshelf Keys.
     /// </summary>
     public List<Text> subshelfKeyTexts = new List<Text>();
-
-    /// <summary>
-    /// The GameObject that holds the current Item Display.
-    /// </summary>
+    
     [Header("Current Item Display Variables")]
-    public GameObject currentItemDisplayGroup;
     /// <summary>
     /// The Text Component that holds the Order Picker's Current Item's name.
     /// </summary>
@@ -43,6 +53,10 @@ public class UserInterface : MonoBehaviour
     /// </summary>
     public Image currentItemSprite;
     /// <summary>
+    /// The graphics that represents the order picker making an invalid pick.
+    /// </summary>
+    public GameObject invalidPickGraphic;
+    /// <summary>
     /// The icon that represents Shipping.
     /// </summary>
     public Sprite shippingIcon;
@@ -50,12 +64,8 @@ public class UserInterface : MonoBehaviour
     /// A list of Sprites for Order Items to use.
     /// </summary>
     public List<Sprite> itemSpriteSymbols = new List<Sprite>();
-
-    /// <summary>
-    /// The GameObject that holds the Orders Values Display.
-    /// </summary>
+    
     [Header("Orders Values Display Variables")]
-    public GameObject ordersValuesDisplayGroup;
     /// <summary>
     /// The text component that displays the Open Orders Value for the player.
     /// </summary>
@@ -78,6 +88,7 @@ public class UserInterface : MonoBehaviour
     private void Start()
     {
         shelfIDText.text = string.Empty;
+        previousPickTimeText.text = 0.ToString("F2");
     }
 
     /// <summary>
@@ -142,6 +153,39 @@ public class UserInterface : MonoBehaviour
     }
 
     /// <summary>
+    /// Updates the Completed Cart Text with a new value.
+    /// </summary>
+    /// <param name="newCount">
+    /// The new value for the text.
+    /// </param>
+    public void UpdateCompletedCartCount(int newCount)
+    {
+        completedCartText.text = newCount.ToString();
+    }
+
+    /// <summary>
+    /// Updates the timer text to the given value.
+    /// </summary>
+    /// <param name="newTime">
+    /// The time to be displayed.
+    /// </param>
+    public void UpdateTimerText(string newTime)
+    {
+        pickTimerText.text = newTime;
+    }
+
+    /// <summary>
+    /// Toggles the Invalid Pick Graphic.
+    /// </summary>
+    /// <param name="status">
+    /// The new status of the graphic.
+    /// </param>
+    public void ToggleInvalidPickGraphic(bool status)
+    {
+        invalidPickGraphic.SetActive(status);
+    }
+
+    /// <summary>
     /// Hides the subshelf keys.
     /// </summary>
     public void HideSubshelfKeys()
@@ -150,18 +194,6 @@ public class UserInterface : MonoBehaviour
         {
             key.SetActive(false);
         }
-    }
-
-    /// <summary>
-    /// Toggles the Order Picking UI.
-    /// </summary>
-    /// <param name="status">
-    /// The new status of the Order Picking UI.
-    /// </param>
-    public void ToggleOrderPickingUI(bool status)
-    {
-        currentItemDisplayGroup.SetActive(status);
-        ordersValuesDisplayGroup.SetActive(status);
     }
 
     /// <summary>

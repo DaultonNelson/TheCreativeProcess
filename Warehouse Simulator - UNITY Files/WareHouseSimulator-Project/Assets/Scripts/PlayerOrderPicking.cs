@@ -45,11 +45,16 @@ public class PlayerOrderPicking : MonoBehaviour
     /// The User Interface in the scene.
     /// </summary>
     private UserInterface ui;
+    /// <summary>
+    /// The Labor Logging logic in the scene.
+    /// </summary>
+    private LaborLogging labor;
     #endregion
 
     private void Start()
     {
         ui = FindObjectOfType<UserInterface>();
+        labor = FindObjectOfType<LaborLogging>();
 
         AcquireNewOrderCart();
     }
@@ -60,7 +65,10 @@ public class PlayerOrderPicking : MonoBehaviour
     public void AcquireNewOrderCart()
     {
         GameObject newCartObject = Instantiate(orderCartPrefab, cartAttachment.position, Quaternion.identity);
+        newCartObject.transform.parent = cartAttachment;
         currentCart = newCartObject.GetComponent<OrderCart>();
+
+        currentCart.cartOrders = currentCart.PopulateCartOrders();
 
         for (int i = 0; i < currentCart.cartOrders.Count; i++)
         {
@@ -139,6 +147,8 @@ public class PlayerOrderPicking : MonoBehaviour
 
                 if (pickedItem != null)
                 {
+                    ui.ToggleInvalidPickGraphic(false);
+                    labor.LogTimer();
                     pickedItems.Add(pickedItem);
                     QueueNextOrderItem();
                 }
