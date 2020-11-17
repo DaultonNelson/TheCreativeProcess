@@ -20,9 +20,9 @@ public class OrderItem : IComparable<OrderItem>
     /// </summary>
     public Color ItemSymbolColor { get; set; } = Color.white;
     /// <summary>
-    /// The ID of the Shelf this Order Item belongs to.
+    /// The ID of the Subshelf this Order Item belongs to.
     /// </summary>
-    public string ParentShelfID;
+    public string ParentSubshelfID;
     #endregion
 
     /// <summary>
@@ -34,10 +34,16 @@ public class OrderItem : IComparable<OrderItem>
     /// <param name="_parent">
     /// The parent ID of this Order Item.
     /// </param>
+    /// <param name="_sprite">
+    /// The Sprite representing this Order Item.
+    /// </param>
+    /// <param name="_color">
+    /// The Color of the Sprite of this Order Item.
+    /// </param>
     public OrderItem(string _name, string _parent, Sprite _sprite, Color _color)
     {
         ItemName = _name;
-        ParentShelfID = _parent;
+        ParentSubshelfID = _parent;
         ItemSymbolSprite = _sprite;
         ItemSymbolColor = _color;
     }
@@ -49,7 +55,7 @@ public class OrderItem : IComparable<OrderItem>
     {
         int output = 0;
 
-        output = ParentShelfID.CompareTo(otherItem.ParentShelfID);
+        output = ParentSubshelfID.CompareTo(otherItem.ParentSubshelfID);
 
         return output;
     }

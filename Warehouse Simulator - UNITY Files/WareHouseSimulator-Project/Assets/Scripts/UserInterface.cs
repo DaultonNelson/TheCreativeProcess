@@ -136,7 +136,7 @@ public class UserInterface : MonoBehaviour
     public void DisplayCurrentItemToPick(OrderItem item)
     {
         currentItemName.text = item.ItemName;
-        currentItemLocation.text = item.ParentShelfID;
+        currentItemLocation.text = item.ParentSubshelfID;
         currentItemSprite.sprite = item.ItemSymbolSprite;
         currentItemSprite.color = item.ItemSymbolColor;
     }

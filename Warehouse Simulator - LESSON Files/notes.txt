@@ -1,13 +1,13 @@
-What my (daulton's) project is.
-Modularity
+*What my (daulton's) project is.
+*Modularity
 Breaking Down Code That's New
-The Importance of Visual Planning
+*The Importance of Visual Planning
 Know when to say "Finished" or "Done"
 Notes on Final Project
 How to Advance from here
 Functionality First
 Work on One thing at a time
 Try to leave work satisfied
-The importance of Organization
+*The importance of Organization
 The 10 Commandments of Game Design (if I can find it)
 Use tutorials for support, not for direction
