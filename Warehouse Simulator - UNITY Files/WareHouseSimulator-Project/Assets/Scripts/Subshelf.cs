@@ -10,7 +10,7 @@ public class Subshelf
     /// <summary>
     /// The item that populates this subshelf.
     /// </summary>
-    public OrderItem shelfItem { get; set; }
+    public OrderItem subshelfItem { get; set; }
     /// <summary>
     /// The amount of items currently on this shelf.
     /// </summary>
@@ -26,7 +26,7 @@ public class Subshelf
             return output;
         }
 
-        output = shelfItem;
+        output = subshelfItem;
         currentItemCount--;
         //Debug.Log($"There are {currentItemCount} {shelfItem.ItemName}'s left on this shelf.");
 

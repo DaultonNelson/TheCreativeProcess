@@ -1261,12 +1261,6 @@ MonoBehaviour:
   laneLetter: 
   shelfNumber: 0
   subshelfAmount: 5
-  shelfItems:
-  - {fileID: 11400000, guid: 1b41fabd6c814e14d8989de4e2b02e67, type: 2}
-  - {fileID: 11400000, guid: 1d36a9ad2b37618498539d96b9c6c10e, type: 2}
-  - {fileID: 11400000, guid: cf2f534b35631484cb0d4d21a3574700, type: 2}
-  - {fileID: 11400000, guid: 6d902a6b42ec2fe4da38badf1f6be190, type: 2}
-  - {fileID: 11400000, guid: 817c1407c0cb3bb42b658ebb08e5ad6f, type: 2}
 --- !u!65 &550068565101389278
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -123,7 +123,7 @@ public class UserInterface : MonoBehaviour
         for (int i = 0; i < subshelves.Count; i++)
         {
             subshelfKeys[i].SetActive(true);
-            subshelfKeyTexts[i].text = $"{subshelves[i].shelfItem.ItemName} (Amt: {subshelves[i].currentItemCount})";
+            subshelfKeyTexts[i].text = $"{subshelves[i].subshelfItem.ItemName} (Amt: {subshelves[i].currentItemCount})";
         }
     }
 

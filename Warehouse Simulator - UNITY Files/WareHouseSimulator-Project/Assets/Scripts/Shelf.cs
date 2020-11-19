@@ -51,11 +51,12 @@ public class Shelf : MonoBehaviour
     /// </summary>
     private void PopulateSubshelves()
     {
+        //for loop loops through a number I give it, and it runs the stuff inside i amount of times
         for (int i = 0; i < subshelfAmount; i++)
         {
             Subshelf subshelf = new Subshelf()
             {
-                shelfItem = new OrderItem(
+                subshelfItem = new OrderItem(
                     OrderItemProcessor.GetRandomNoun(),
                     $"{ShelfID}.{i + 1}",
                     ui.GetRandomItemSpriteSybol(),
@@ -84,7 +85,7 @@ public class Shelf : MonoBehaviour
             return output;
         }
         
-        if (expectedOrder != subshelves[subshelfIndex - 1].shelfItem)
+        if (expectedOrder != subshelves[subshelfIndex - 1].subshelfItem)
         {
             ui.ToggleInvalidPickGraphic(true);
             Debug.LogError("Invalid Order Item pick was attempted.", gameObject);

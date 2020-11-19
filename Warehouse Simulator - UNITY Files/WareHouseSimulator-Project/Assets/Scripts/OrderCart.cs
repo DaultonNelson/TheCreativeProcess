@@ -46,7 +46,7 @@ public class OrderCart : MonoBehaviour
             Shelf randomShelf = shelves[Random.Range(0, shelves.Count)];
             Subshelf randomSubshelf = randomShelf.subshelves[Random.Range(0, randomShelf.subshelfAmount)];
 
-            output.Add(randomSubshelf.shelfItem);
+            output.Add(randomSubshelf.subshelfItem);
         }
 
         //We need to sort the list based on warehouse layout
