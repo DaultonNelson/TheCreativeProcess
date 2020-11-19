@@ -4,12 +4,22 @@
 
 *Modularity
 *Functionality First
-Breaking Down Code That's New
-Use tutorials for support, not for direction
-Try to leave work satisfied
-Work on One thing at a time
+*Breaking Down Code That's New
+*Use tutorials for support, not for direction
+*Try to leave work satisfied
+*Work on One thing at a time
 
-How to Advance from here
-The 10 Commandments of Game Design (if I can find it)
-Notes on Final Project
-Know when to say "Finished" or "Done"
+*How to Advance from here
+
+*The 8 Commandments of Game Design
+-Thou shall have an audience in mind
+-Thou shalt make thy game winnable
+-Thou shalt tell the user how to play your game
+-Thou shalt not tell the user how they should play your game
+-Thou shalt make your game consistent
+-Thou shalt make thy base mechanic basic
+-Thou shalt challengen the user gradually
+-Thou shalt always ask why.
+
+*Notes on Final Project
+*Know when to say "Finished" or "Done"
