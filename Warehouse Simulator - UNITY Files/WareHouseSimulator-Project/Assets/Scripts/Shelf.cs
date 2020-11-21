@@ -27,7 +27,7 @@ public class Shelf : MonoBehaviour
     /// </summary>
     public string ShelfID { get { return $"{areaCode.ToUpper()}:{laneLetter.ToUpper()}{shelfNumber}"; } }
     /// <summary>
-    /// A list of this Shelf's subshelfs.
+    /// A list of this Shelf's subshelves.
     /// </summary>
     public List<Subshelf> subshelves { get; set; } = new List<Subshelf>();
 
