@@ -1,0 +1,17 @@
+Physics/Collision on Order Cart
+Changes in Sorting Algorythm
+Aesthetics in Shipping
+Expansion of Logging
+A Menu to view Logs
+A 'Zero (0)' added to shelf names
+Physics on Signs
+Some audio
+Items that building onto carts
+A restock function on shelves
+Work Day implementation
+A rate (items picker per time)
+Numbering of lanes so player can see numbering
+Movement Tutorial
+If have multiple of same item in queue, pick multiple
+Figure out how shelves can fill up by themselves
+Cut and split up User Interface Class
